@@ -1,16 +1,15 @@
 
 import Foundation
 
-final public class CatFactsNetworkManager {
+final public class GenericNetworkManager {
     private let baseURL: String
-    private let endpoint: String
+    private let endpoint = ""
     
-    public init(baseURL: String, endpoint: String) {
+    public init(baseURL: String) {
         self.baseURL = baseURL
-        self.endpoint = endpoint
     }
     
-    public func fetchFacts<T: Decodable>(baseURL: String, endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
+    public func fetchFacts<T: Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
         let urlStr = "\(baseURL + endpoint)"
         
         guard let url = URL(string: urlStr) else {
