@@ -1,6 +1,6 @@
 # GenericNetworkManager
 
-Generic network manager class `GenericNetworkManager` responsible for making API requests and handling responses. It encapsulates common networking functionality, such as constructing URLs, making asynchronous requests using URLSession, and decoding responses using generics to support a variety of response types.
+GenericNetworkManager is a Swift package designed for making API requests and handling responses. It encapsulates common networking functionality, such as constructing URLs, making asynchronous requests using URLSession, and decoding responses using generics to support a variety of response types.
 
 
 ## Features
