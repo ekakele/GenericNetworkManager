@@ -8,10 +8,6 @@ Generic network manager class `GenericNetworkManager` responsible for making API
 The 'GenericNetworkManager' class is designed to be flexible and reusable across different parts of an application, providing a solid foundation for making API requests in a generic and reusable manner. This design allows for easy integration with various APIs by allowing users to specify the appropriate endpoint and expected response type. The mentioned improvements serve as suggestions to enhance the class's flexibility and usability in various scenarios.
 
 
-## Properties
-
-
-
 ## Installation
 
 #### Swift Package Manager (SPM)
@@ -43,7 +39,7 @@ The 'GenericNetworkManager' class is designed to be flexible and reusable across
     }
     ```
     
-> Make sure to replace `https://api.example.com` with your actual API base URL and `/example-endpoint` with the specific endpoint you intend to use. This adjusted usage example provides a more generalized structure without specifying the result handling, allowing users to adapt it based on their specific needs.
+Make sure to replace `https://api.example.com` with your actual API base URL and `/example-endpoint` with the specific endpoint you intend to use. This adjusted usage example provides a more generalized structure without specifying the result handling, allowing users to adapt it based on their specific needs.
 
 
 ## Release History
