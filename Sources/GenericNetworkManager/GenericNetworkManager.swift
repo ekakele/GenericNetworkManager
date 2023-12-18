@@ -9,10 +9,10 @@ final public class GenericNetworkManager {
         self.baseURL = baseURL
     }
     
-    public func fetchFacts<T: Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
-        let urlStr = "\(baseURL + endpoint)"
+    public func fetchData<T: Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
+        let urlString = "\(baseURL + endpoint)"
         
-        guard let url = URL(string: urlStr) else {
+        guard let url = URL(string: urlString) else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
@@ -29,8 +29,10 @@ final public class GenericNetworkManager {
             }
             
             do {
-                let catFactsResponse = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(catFactsResponse))
+                let dataResponse = try JSONDecoder().decode(T.self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(dataResponse))
+                }
             } catch {
                 completion(.failure(error))
             }
