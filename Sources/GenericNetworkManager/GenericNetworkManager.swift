@@ -2,17 +2,20 @@
 import Foundation
 
 final public class GenericNetworkManager {
-    private let baseURL: String
-    private let endpoint = ""
+    //MARK: - Properties
+    public static var shared = GenericNetworkManager()
+    private let baseURL: String?
     
-    public init(baseURL: String) {
+    //MARK: - Inits
+    public init(baseURL: String? = nil) {
         self.baseURL = baseURL
     }
     
+    //MARK: - Methods
     public func fetchData<T: Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
-        let urlString = "\(baseURL + endpoint)"
+        let urlString = (baseURL ?? "") + endpoint
         
-        guard let url = URL(string: urlString) else {
+        guard !urlString.isEmpty, let url = URL(string: urlString) else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
