@@ -4,23 +4,16 @@ import Foundation
 final public class GenericNetworkManager {
     //MARK: - Properties
     public static var shared = GenericNetworkManager()
-    private let baseURL: String?
-    
-    //MARK: - Inits
-    public init(baseURL: String? = nil) {
-        self.baseURL = baseURL
-    }
     
     //MARK: - Methods
-    public func fetchData<T: Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
-        let urlString = (baseURL ?? "") + endpoint
+    public func fetchData<T: Decodable>(with URLString: String, completion: @escaping (Result<T, Error>) -> Void) {
         
-        guard !urlString.isEmpty, let url = URL(string: urlString) else {
+        guard !URLString.isEmpty, let URL = URL(string: URLString) else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: URL) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
